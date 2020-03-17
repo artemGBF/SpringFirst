@@ -1,8 +1,11 @@
 package com.gbf.springfirst.repository;
 
 import com.gbf.springfirst.model.User;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,6 +14,7 @@ import java.util.Comparator;
 public abstract class UserRepository {
     protected ArrayList<User> lst = new ArrayList<>();
 
+    @PostConstruct
     abstract void readUsers() throws IOException;
 
     public void add(User a){
@@ -34,5 +38,6 @@ public abstract class UserRepository {
         this.lst.forEach(System.out::println);
     }
 
+    @PreDestroy
     abstract void writeUsers() throws IOException;
 }

@@ -21,6 +21,7 @@ public class UserRepositoryFile extends UserRepository {
             User u = new User(s[0], s[1]);
             super.lst.add(u);
         }
+        br.close();
     }
 
     @PreDestroy
@@ -30,5 +31,6 @@ public class UserRepositoryFile extends UserRepository {
         for(User user:super.lst){
             bw.write(user.toString());
         }
+        bw.close();
     }
 }
